@@ -29,9 +29,9 @@
     </target>
     
     <target name="php-codesniffer">
-        <exec executable="phpcs"
-              dir="${basedir}"
+        <exec executable="phpcs" failonerror="on"
               output="${basedir}/build/logs/checkstyle.xml">
+              <arg path="${basedir}" />
               <arg value="--report=checkstyle" />
               <arg value="--standard=PEAR"/>
         </exec>
