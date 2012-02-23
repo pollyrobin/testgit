@@ -26,7 +26,7 @@
     </target>
     
     <target name="php-codesniffer">
-        <exec executable="phpcs" failonerror="on"
+        <exec executable="phpcs" failonerror="false"
               dir="${basedir}/source"
               output="${basedir}/build/logs/checkstyle.xml">
               <arg line="--report=checkstyle 
