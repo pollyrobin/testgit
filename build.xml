@@ -13,10 +13,7 @@
  
     <target name="prepare">
         <mkdir dir="${basedir}/build/logs" />
-        <mkdir dir="${basedir}/build/codebrowser" />
         <mkdir dir="${basedir}/build/coverage" />
-        <mkdir dir="${basedir}/build/cpd" />
-        <mkdir dir="${basedir}/build/dependencies" />
         <mkdir dir="${basedir}/build/docblox" />
         <mkdir dir="${basedir}/build/phpcb" />
         <mkdir dir="${basedir}/tests" />
@@ -32,7 +29,7 @@
         <exec executable="phpcs" failonerror="on"
               dir="${basedir}"
               output="${basedir}/build/logs/checkstyle.xml">
-              <arg line="--report=checkstle 
+              <arg line="--report=checkstyle 
                     --standard=PEAR 
               ."/>
         </exec>
