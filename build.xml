@@ -24,7 +24,7 @@
 
     <target name="documentation">
       <exec dir="${basedir}" executable="docblox" failonerror="false">
-            <arg line="run -d ${basedir}/source -t ${basedir}/build/docblox" />
+            <arg line="run -d ${basedir} -t ${basedir}/build/docblox" />
       </exec>
     </target>
     
