@@ -15,7 +15,7 @@
  
     <target name="phpcs">
         <exec dir="${basedir}/source" executable="phpcs" failonerror="false" output="/dev/null">
-            <arg line="--extensions=php --ignore=build/*,tests/* --standard=Zend --tab-width=4 --report=checkstyle --report-file=${basedir}/build/logs/checkstyle.xml ." />
+            <arg line="--extensions=php --standard=Zend --tab-width=4 --report=checkstyle --report-file=${basedir}/build/logs/checkstyle.xml ." />
         </exec>
     </target>
  
@@ -27,10 +27,7 @@
  
     <target name="phpcpd">
         <exec dir="${basedir}/source" executable="phpcpd" failonerror="false">
-            <arg line="--log-pmd=${basedir}/build/logs/pmd-cpd.xml
-                       --exclude=build
-                       --exclude=tests
-                       ." />
+            <arg line="--log-pmd=${basedir}/build/logs/pmd-cpd.xml" />
         </exec>
         <exec dir="${basedir}/build/logs" executable="xsltproc" failonerror="false" output="${basedir}/build/cpd/index.html">
             <arg line="/path/to/cpd.xsl ${basedir}/build/logs/pmd-cpd.xml" />
