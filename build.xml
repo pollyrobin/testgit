@@ -30,10 +30,11 @@
     
     <target name="php-codesniffer">
         <exec executable="phpcs" failonerror="on"
+              dir="${basedir}"
               output="${basedir}/build/logs/checkstyle.xml">
-              <arg path="${basedir}" />
-              <arg value="--report=checkstyle" />
-              <arg value="--standard=PEAR"/>
+              <arg line="--report=checkstle 
+                    --standard=PEAR" 
+              ./>
         </exec>
     </target>
     
