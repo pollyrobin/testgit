@@ -32,9 +32,8 @@
         <exec executable="phpcs"
               dir="${basedir}"
               output="${basedir}/build/logs/checkstyle.xml">
-              <arg line="--report=checkstyle
-                     --standard=PEAR
-            ."/>
+              <arg value="--report=checkstyle" />
+              <arg value="--standard=PEAR"/>
         </exec>
     </target>
     
