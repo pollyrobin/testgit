@@ -6,11 +6,11 @@
             <arg line="pull"></arg>
       </exec>
     </target>-->
-<project name="test project" default="build">
+<project name="test project" default="build" basedir="../">
     <target name="clean">
         <delete dir="${basedir}/build" />
     </target>
- 
+    
     <target name="prepare">
         <mkdir dir="${basedir}/build/logs" />
         <mkdir dir="${basedir}/build/coverage" />
@@ -20,14 +20,14 @@
     </target>
 
     <target name="documentation">
-      <exec dir="${basedir}" executable="docblox" failonerror="false">
-            <arg line="run -d ${basedir} -t ${basedir}/build/docblox" />
+      <exec dir="${basedir}/source" executable="docblox" failonerror="false">
+            <arg line="run -d ${basedir}/source -t ${basedir}/build/docblox" />
       </exec>
     </target>
     
     <target name="php-codesniffer">
         <exec executable="phpcs" failonerror="on"
-              dir="${basedir}"
+              dir="${basedir}/source"
               output="${basedir}/build/logs/checkstyle.xml">
               <arg line="--report=checkstyle 
                     --standard=PEAR 
@@ -37,7 +37,7 @@
     
     <target name="phpmd">
         <exec executable="phpmd">
-            <arg path="${basedir}" />
+            <arg path="${basedir}/source" />
             <arg value="xml" />
             <arg value="rule" />
             <arg value="--reportfile" /> 
@@ -46,7 +46,7 @@
     </target>
     
     <target name="phpunit">
-        <exec executable="phpunit" dir="${basedir}" failonerror="on">
+        <exec executable="phpunit" dir="${basedir}/source" failonerror="on">
             <arg line="--log-junit ${basedir}/build/logs/junit.xml
                      --coverage-clover  ${basedir}/build/logs/phpunit.coverage.xml
                      --coverage-html ${basedir}/build/coverage" />
@@ -60,10 +60,10 @@
             <arg value="--output" />
             <arg value="${basedir}/build/phpcb" />
             <arg value="--source" />
-            <arg value="${basedir}" />
+            <arg value="${basedir}/source" />
         </exec>
     </target>
     
-    <target name="build" depends="clean,prepare, documentation,php-codesniffer,phpmd" />
+    <target name="build" depends="clean,prepare,php-codesniffer,documentation,phpmd,phpcb" />
 </project>
 
