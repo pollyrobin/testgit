@@ -9,6 +9,7 @@
         <mkdir dir="${basedir}/build/coverage" />
         <mkdir dir="${basedir}/build/cpd" />
         <mkdir dir="${basedir}/build/dependencies" />
+        <mkdir dir="${basedir}/build/tests" />
     </target>
  
     <target name="phpcs">
