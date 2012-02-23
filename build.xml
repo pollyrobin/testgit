@@ -17,6 +17,8 @@
         <mkdir dir="${basedir}/build/coverage" />
         <mkdir dir="${basedir}/build/cpd" />
         <mkdir dir="${basedir}/build/dependencies" />
+        <mkdir dir="${basedir}/build/docblox" />
+        <mkdir dir="${basedir}/build/phpcb" />
         <mkdir dir="${basedir}/tests" />
     </target>
 
@@ -38,7 +40,7 @@
     
     <target name="phpmd">
         <exec executable="phpmd">
-            <arg path="${basedir}/source" />
+            <arg path="${basedir}" />
             <arg value="xml" />
             <arg value="rule" />
             <arg value="--reportfile" /> 
@@ -47,7 +49,7 @@
     </target>
     
     <target name="phpunit">
-        <exec executable="phpunit" dir="${basedir}/source" failonerror="on">
+        <exec executable="phpunit" dir="${basedir}" failonerror="on">
             <arg line="--log-junit ${basedir}/build/logs/junit.xml
                      --coverage-clover  ${basedir}/build/logs/phpunit.coverage.xml
                      --coverage-html ${basedir}/build/coverage" />
@@ -61,7 +63,7 @@
             <arg value="--output" />
             <arg value="${basedir}/build/phpcb" />
             <arg value="--source" />
-            <arg value="${basedir}/source" />
+            <arg value="${basedir}" />
         </exec>
     </target>
     
