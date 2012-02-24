@@ -50,7 +50,8 @@
         <exec executable="phpunit" dir="${basedir}/source" failonerror="on">
             <arg line="--log-junit ${basedir}/build/logs/junit.xml
                      --coverage-clover  ${basedir}/build/logs/phpunit.coverage.xml
-                     --coverage-html ${basedir}/build/coverage" />
+                     --coverage-html ${basedir}/build/coverage 
+                ."/>
         </exec>
     </target>
     
