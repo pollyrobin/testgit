@@ -50,8 +50,7 @@
         <exec executable="phpunit" dir="${basedir}/source" failonerror="on">
             <arg line="--log-junit ${basedir}/build/logs/junit.xml
                      --coverage-clover  ${basedir}/build/logs/phpunit.coverage.xml
-                     --coverage-html ${basedir}/build/coverage 
-                ."/>
+                     --coverage-html ${basedir}/build/coverage" />
         </exec>
     </target>
     
@@ -66,5 +65,5 @@
         </exec>
     </target>
     
-    <target name="build" depends="phpcs,documentation,phpmd,phpcb,phpunit" />
+    <target name="build" depends="phpcs,documentation,phpmd,phpcb" />
 </project>
