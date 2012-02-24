@@ -8,6 +8,8 @@
     </target>-->
 <project name="test project" default="build" basedir="../">
 
+    <taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
+
     <target name="clean">
         <delete dir="${basedir}/build" />
     </target>
