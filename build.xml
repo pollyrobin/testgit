@@ -25,7 +25,7 @@
       </exec>
     </target>
     
-    <target name="php-codesniffer">
+    <target name="phpcs">
         <exec executable="phpcs" failonerror="false"
               dir="${basedir}/source"
               output="${basedir}/build/logs/checkstyle.xml">
