@@ -8,8 +8,6 @@
     </target>-->
 <project name="test project" default="build" basedir="../">
 
-    <taskdef name="phpmd" classname="org.phpmd.ant.PHPMDTask"/>
-
     <target name="clean">
         <delete dir="${basedir}/build" />
     </target>
@@ -46,14 +44,6 @@
             <arg value="--reportfile" /> 
             <arg value="${basedir}/build/logs/phpmd.xml" /> 
         </exec>
-    </target>
-    <target name="phpmd2">
-        <phpmd rulesetfiles="unusedcode" failonerror="off">
-            <formatter type="xml" toFile="${basedir}/build/logs/pmd2.xml" />
-            <fileset dir="${basedir}/source">
-                <include name="*.php" />
-            </fileset>
-        </phpmd>
     </target>
     
     <target name="phpunit">
