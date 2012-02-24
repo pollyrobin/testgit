@@ -65,6 +65,5 @@
         </exec>
     </target>
     
-    <target name="build" depends="clean,prepare,phpcs,documentation,phpmd,phpcb" />
+    <target name="build" depends="phpcs,documentation,phpmd,phpcb,phpunit" />
 </project>
-
