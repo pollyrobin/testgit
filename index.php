@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 
 require('paginatorclass.php');
 
-$dbcon = mysql_connect("195.20.9.80", "dfguser", "dfg21sh");
+$dbcon = mysql_connect("ip server", "user", "password");
 mysql_select_db("dfguser", $dbcon) or trigger_error(mysql_error());
 
 $query = "SELECT id FROM gastenboek";
