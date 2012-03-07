@@ -1,10 +1,28 @@
 <?php
-class PhpUnitTest extends PHPUnit_Framework_TestCase
+require('config.php');
+require('paginatorclass.php');
+
+class PaginatorTest extends PHPUnit_Framework_TestCase
 {
-	public function testOne()
-    {
-        $this->assertTrue(TRUE);
-    }
+	public function setUp()
+	{
+		$dbcon = mysql_connect($GLOBALS['server'], $GLOBALS['username'], $GLOBALS['password']);
+		mysql_select_db($GLOBALS['db'], $dbcon) or trigger_error(mysql_error());
+		$query = "SELECT id FROM gastenboek";
+		$showquery = "SELECT * FROM gastenboek";
+		$berichtperpagina = 3;	
+		$geenberichten = "er zijn geen berichten";
+	
+		$_SERVER['REQUEST_URI'] = 'http://impres.local/github/testgit/index.php';
+		
+		$pagination = new Paginator($query,$showquery,$berichtperpagina);
+		$berichten = $pagination->Showall($geenberichten);
+	}
+	
+	public function testCurrentpage()
+	{
+		$this->assertEquals(1,$this->testCurrentpage());
+	}
  
     /**
      * @depends testOne
@@ -13,51 +31,4 @@ class PhpUnitTest extends PHPUnit_Framework_TestCase
     {
     }
 }
-
-class RekenMaarRaak extends PHPUnit_Framework_TestCase
-{
-	public $getal1;
-	public $getal2;
-	public $getal3;
-
-	public function add($getal1, $getal2)
-	{
-		$this->getal1 = 5;
-		$this->getal2 = 3;
-		$this->getal1 + $this->getal2 = $this->getal3;
-		$this->assertEquals($this->getal3, 8);
-		
-		return $this->getal3;
-	}	
-	public function subtract()
-	{
-		$this->getal1 = 5;
-		$this->getal2 = 3;
-		$this->getal1 - $this->getal2 = $this->getal3;
-		$this->assertEquals($this->getal3, 2);
-
-		return $this->getal3;
-	}
-
-	public function multiply()
-	{
-		$this->getal1 = 5;
-		$this->getal2 = 3;
-		$this->getal1 * $this->getal2 = $this->getal3;
-		$this->assertEquals($this->getal3, 15);
-
-		return $this->getal3;
-	}
-	public function divide()
-	{
-		$this->getal1 = 5;
-		$this->getal2 = 3;
-		$this->getal1 / $this->getal2 = $this->getal3;
-		$this->assertEquals($this->getal3, 25);
-
-		return $this->getal3;
-	}
-}
-
-
 ?>

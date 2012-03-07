@@ -3,13 +3,14 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 require('paginatorclass.php');
+require('config.php');
 
-$dbcon = mysql_connect("ip server", "user", "password");
-mysql_select_db("dfguser", $dbcon) or trigger_error(mysql_error());
+$dbcon = mysql_connect($server, $username, $password);
+mysql_select_db($db, $dbcon) or trigger_error(mysql_error());
 
 $query = "SELECT id FROM gastenboek";
 $showquery = "SELECT * FROM gastenboek";
-$berichtperpagina = 2;
+$berichtperpagina = 3;
 		
 $pagination = new Paginator($query,$showquery,$berichtperpagina);
 
@@ -30,11 +31,8 @@ $weergavenext = '->';
 $weergavelast = '-->'; 
 echo $pagination->Firstpage($weergavefirst);
 echo $pagination->Previouspage($weergaveprev);
+echo $pagination->Pagenumbers(4);
 echo $pagination->Nextpage($weergavenext);
 echo $pagination->Lastpage($weergavelast);
-echo '<br />';
-echo $pagination->Pagenumbers(3);
-
 
 ?>
-
