@@ -41,6 +41,7 @@ class PaginatorTest extends PHPUnit_Framework_TestCase
     }
 
     public function testPreviouspage(){
+		$this->Currentpage() = 5;
         $weergave = 'iets';
         $this->assertEquals(true, is_string($this->pagination->Previouspage($weergave)));
     }
