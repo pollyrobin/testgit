@@ -2,7 +2,6 @@
 require('config.php');
 require('paginatorclass.php');
 
-
 class PaginatorTest extends PHPUnit_Framework_TestCase
 {
     public $pagination;
